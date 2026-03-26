@@ -11,6 +11,7 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "215491922286",
   appId: "1:215491922286:web:640b1a035e9ccd6432597f"
 };
+export { FIREBASE_CONFIG };
 
 // Reglas de seguridad recomendadas para Firebase Realtime Database:
 // (pégalas en Firebase Console → Realtime Database → Rules)
