@@ -1,0 +1,264 @@
+/* styles.css — IBIME Portal de Calificaciones */
+
+:root {
+  --primary: #4F46E5;
+  --primary-dark: #4338ca;
+  --accent: #10B981;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+  --bg-overlay: rgba(17, 24, 39, 0.7);
+  --card-bg: #ffffff;
+  --text-main: #1F2937;
+  --text-light: #6B7280;
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
+  --radius: 1.5rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+  padding: 40px 20px;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f4f6;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-overlay);
+  z-index: -1;
+  backdrop-filter: blur(5px);
+}
+
+/* ── Header ── */
+.header-container {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 700px;
+}
+
+h2 {
+  color: white;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 6px rgba(0,0,0,.3);
+}
+
+.subtitle {
+  color: #e5e7eb;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  background: white;
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  box-shadow: var(--shadow-xl);
+  transition: transform .3s ease;
+}
+
+.search-box:focus-within {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px rgba(79,70,229,.3);
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  outline: none;
+  font-family: 'Comfortaa', cursive;
+  color: var(--text-main);
+}
+
+button.btn-search {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Comfortaa', cursive;
+  transition: background .3s;
+}
+
+button.btn-search:hover { background: var(--primary-dark); }
+
+/* ── Resultados ── */
+#resultado {
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeInUp .6s ease-out;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+/* Tarjeta alumno */
+.student-header {
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.student-icon {
+  background: #e0e7ff;
+  color: var(--primary);
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
+
+.student-title h3 { margin: 0; color: var(--primary); font-size: 1.5rem; }
+.student-title span { color: var(--text-light); font-size: .9rem; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.info-item {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 15px;
+  border-left: 5px solid var(--primary);
+}
+
+.info-item small { display:block; color:var(--text-light); font-size:.8rem; text-transform:uppercase; margin-bottom:5px; font-weight:700; }
+.info-item div   { font-size:1.1rem; font-weight:600; color:var(--text-main); }
+
+/* Alertas */
+.alert-box        { padding:15px; border-radius:15px; margin-bottom:20px; text-align:center; font-size:.95rem; }
+.alert-info       { background:#eff6ff; color:#1e40af; border:1px solid #dbeafe; }
+.alert-warning    { background:#fffbeb; color:#92400e; border:1px solid #fcd34d; }
+.alert-error      { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+
+/* Tabla */
+.table-container { overflow-x:auto; border-radius:20px; }
+
+table { width:100%; border-collapse:separate; border-spacing:0 10px; }
+
+thead th {
+  color: var(--text-light);
+  font-size: .85rem;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+tr.materia {
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.05);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+tr.materia td {
+  padding: 20px;
+  border-top: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+  font-weight: 600;
+}
+
+tr.materia td:first-child { border-top-left-radius:15px; border-bottom-left-radius:15px; border-left:1px solid #f3f4f6; }
+tr.materia td:last-child  { border-top-right-radius:15px; border-bottom-right-radius:15px; border-right:1px solid #f3f4f6; text-align:right; }
+
+tr.materia:hover { transform:translateY(-3px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1); }
+
+.status-pill {
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* Acordeón */
+tr.detalle        { display: none; }
+tr.detalle.active { display: table-row; }
+
+.detail-wrapper {
+  background: #f8fafc;
+  margin: 0 10px 10px;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  animation: slideDown .3s ease;
+}
+
+.mini-table          { width:100%; border-collapse:collapse; }
+.mini-table th       { font-size:.8rem; color:#64748b; border-bottom:2px solid #e2e8f0; padding:10px; text-align:left; }
+.mini-table td       { padding:12px 10px; border-bottom:1px solid #e2e8f0; font-size:.95rem; }
+.mini-table tr:last-child td { border-bottom:none; }
+
+.score      { font-weight:700; font-size:1.1rem; }
+.score-high { color: var(--accent); font-weight:700; font-size:1.1rem; }
+.score-low  { color: var(--danger); font-weight:700; font-size:1.1rem; }
+
+/* Loading */
+.loader-container { text-align:center; margin:40px; color:white; display:none; }
+.spinner {
+  width:50px; height:50px;
+  border:5px solid rgba(255,255,255,.3);
+  border-top:5px solid white;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin:0 auto 15px;
+}
+
+.footer-time {
+  margin-top: 30px;
+  color: rgba(255,255,255,.6);
+  font-size: .8rem;
+  background: rgba(0,0,0,.3);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+/* Animaciones */
+@keyframes fadeInUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes spin      { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
+/* Móvil */
+@media (max-width: 600px) {
+  .student-header { flex-direction:column; text-align:center; }
+  .search-box     { flex-direction:column; padding:5px; border-radius:20px; }
+  input[type="text"] { width:100%; text-align:center; margin-bottom:10px; }
+  button.btn-search  { width:100%; }
+  h2 { font-size:1.8rem; }
+}

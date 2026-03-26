@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Calificaciones | IBIME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="header-container">
+    <h2>Portal del Alumno</h2>
+    <div class="subtitle">Consulta tus calificaciones y progreso académico</div>
+
+    <div class="search-box">
+      <input type="text" id="matricula" placeholder="Ingresa tu matrícula aquí..." autocomplete="off">
+      <button class="btn-search" id="btnBuscar">BUSCAR</button>
+    </div>
+  </div>
+
+  <div id="loading" class="loader-container">
+    <div class="spinner"></div>
+    <p>Conectando con la base de datos...</p>
+  </div>
+
+  <div id="resultado"></div>
+  <div id="tiempoInfo" class="footer-time"></div>
+
+  <!-- Firebase SDK (módulos ES) + tu app -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
