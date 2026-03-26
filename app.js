@@ -2,6 +2,7 @@
 // Lee datos de Firebase Realtime Database y renderiza el portal
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, child, get, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 import { FIREBASE_CONFIG } from "./firebase-config.js";
 
 // ── Init Firebase ──────────────────────────────────────────
@@ -216,9 +217,6 @@ window.toggle = function(idx) {
 function sanitizarClave(str) {
   return str.replace(/[.#$[\]/]/g, "_");
 }
-
-import { ref, push } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
-
 // Esta función guarda el log de la búsqueda en Firebase
 function logConsulta(matricula, nombre, tutor) {
   const now = new Date();
