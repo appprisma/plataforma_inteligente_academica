@@ -217,3 +217,17 @@ window.toggle = function(idx) {
 function sanitizarClave(str) {
   return str.replace(/[.#$[\]/]/g, "_");
 }
+
+import { ref, push } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+// Esta función guarda el log de la búsqueda en Firebase
+function logConsulta(matricula, nombre, tutor) {
+  const now = new Date();
+  const logRef = ref(db, 'logs_consultas'); // Nodo 'logs_consultas' en tu base de datos
+  push(logRef, {
+    matricula: matricula,
+    nombre: nombre,
+    tutor: tutor,
+    fecha: now.toISOString()
+  });
+}
