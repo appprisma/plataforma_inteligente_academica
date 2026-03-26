@@ -46,8 +46,9 @@ async function consultar() {
     if (!alumno) {
       renderError("❌ Matrícula no encontrada.");
       return;
+    logConsulta(alumno.matricula, alumno.nombre, alumno.tutor);
     }
-
+    
     // 2. Buscar calificaciones por correo
     const correoKey     = sanitizarClave(alumno.correo);
     const califSnap     = await get(child(dbRef, `calificaciones/${correoKey}`));
